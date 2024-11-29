@@ -14,21 +14,21 @@ export const handleAntilink = async (m, sock, logger, isBotAdmins, isAdmins, isC
         const action = args[0] ? args[0].toLowerCase() : '';
 
         if (!m.isGroup) {
-            await sock.sendMessage(m.from, { text: 'This command can only be used in groups.' }, { quoted: m });
+            await sock.sendMessage(m.from, { text: '*This command can only be used in groups.*' }, { quoted: m });
             return;
         }
 
         if (!isBotAdmins) {
-            await sock.sendMessage(m.from, { text: 'The bot needs to be an admin to manage the antilink feature.' }, { quoted: m });
+            await sock.sendMessage(m.from, { text: '*The bot needs to be an admin to manage the antilink feature.*' }, { quoted: m });
             return;
         }
 
         if (action === 'on') {
             if (isAdmins) {
                 antilinkSettings[m.from] = true;
-                await sock.sendMessage(m.from, { text: 'Antilink feature has been enabled for this chat.' }, { quoted: m });
+                await sock.sendMessage(m.from, { text: '*Antilink feature has been enabled for this chat.*' }, { quoted: m });
             } else {
-                await sock.sendMessage(m.from, { text: 'Only admins can enable the antilink feature.' }, { quoted: m });
+                await sock.sendMessage(m.from, { text: '*Only admins can enable the antilink feature.*' }, { quoted: m });
             }
             return;
         }
